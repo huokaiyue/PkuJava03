@@ -1,29 +1,33 @@
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
 public class Solution {
-    public boolean hasCycle(ListNode head) {
-        //Ê¹¿ìÖ¸ÕëÃ¿´Î×ßÁ½²½£¬ÂıÖ¸ÕëÃ¿´ÎÒ»²½£¬ÏàÍ¬Ê±¼äÄÚ£¬¿ìÖ¸Õë×ßµÄ¾àÀëÊÇÂıÖ¸ÕëµÄÁ½±¶¡£
-        //Èç¹û¿ìÖ¸ÕëµÄËùÖª½áµãµÄÏÂ¸ö½áµãÎª¿Õ£¬ÔòÃ»ÓĞ»·£¬Èç¹û¿ìÖ¸ÕëÓëÂıÖ¸ÕëËùÖª½áµãÏàÍ¬£¬ÔòÓĞ»·
-        if(head==null)
-           return false;
-        ListNode fast=head,slow=head;
-        while(true){
-          //  if(fast.next==null)
-          if(fast.next==null||fast.next.next==null)
-               return false;
-            fast=fast.next.next;
-            slow=slow.next;
-            if(fast==slow)
-             return true;
-        }
+    public int majorityElement(int[] nums) {
+    /* int a=nums.length;
+     int sum=0;
+     int max=0;
+     int m=0;
+     for(int i=0;i<a;i++){
+       for(int j=i+1;j<a;j++){
+        if(nums[i]==nums[j])
+           sum+=1;
+       }
+       if(max<sum){
+          max=sum;
+          m=nums[i];
+       }
+     }
+     return m;*/
+     int mid=0;
+     int count=0;
+     for(int i=0;i<nums.length;i++){//æ¯æ‰¾å‡ºä¸ç›¸åŒçš„å…ƒç´ ï¼Œå°±æˆå¯¹åˆ é™¤ã€‚ç”±äºç›¸åŒå…ƒç´ æ•°å¤šä½™ä¸€åŠï¼Œæœ€åå‰©ä¸‹çš„ä¸€å®šæ˜¯å…ƒç´ æ•°æœ€å¤šçš„æ•°
+         if(count==0){
+             mid=nums[i];
+             count=1;
+         }
+         else
+           if(mid==nums[i])
+              count++;
+           else
+             count--;
+     }
+     return mid;
     }
 }
